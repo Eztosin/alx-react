@@ -16,7 +16,7 @@ $(document).ready(() => {
     $('<p/>', { text: 'Dashboard data for the students' })
 	.appendTo('body');
     $('<button/>', { text: 'Click here to get started' })
-	.appendTo('body');
+	.appendTo('body').on('click', updateCounter);
     $('<p/>', { id: 'count' }).appendTo('body');
     $('<p/>', { text: 'Copyright - Holberton School' })
 	.appendTo('body');
