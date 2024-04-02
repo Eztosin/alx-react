@@ -1,3 +1,4 @@
 dist/main.js
 dist/main.js.LICENSE.txt
-package-lock.json
+task_0/ackage-lock.json
+task_0/node-modules
