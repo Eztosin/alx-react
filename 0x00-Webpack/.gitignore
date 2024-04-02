@@ -1,4 +1,4 @@
-dist/main.js
-dist/main.js.LICENSE.txt
-task_0/package-lock.json
-task_0/node-modules/
+0x00-Webpack/task_0/dist/main.js
+0x00-Webpack/task_0/dist/main.js.LICENSE.txt
+0x00-Webpack/task_0/package-lock.json
+0x00-Webpack/task_0/node-modules/
