@@ -4,6 +4,10 @@ import { getFullYear, getFooterCopy } from './utils';
 
 
 export default function App() {
+    const handleLabelClick = (inputId) => {
+	document.getElementById(inputId).focus();
+    };
+
   return (
     <div className="App">
       <div className="App-header">
