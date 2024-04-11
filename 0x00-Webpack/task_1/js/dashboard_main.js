@@ -6,19 +6,17 @@ import _ from 'lodash';
 * has been clicked.
 */
 
-const updateCounter = _.debounce(() => {
-    const count = parseInt($('#count').text()) || 0;
-    count += 1;
-    $('#count').text(`${count} clicks on the button`);
-}, 300);
+$(document).ready(function () {
+    // Create elements
+    $('<p>Holberton Dashboard</p>').appendTo('body');
+    $('<p>Dashboard data for the students</p>').appendTo('body');
+    $('<button>Click here to get started</button>').appendTo('body').click(_.debounce(updateCounter, 1000));
+    $('<p id="count"></p>').appendTo('body');
+    $('<p>Copyright - Holberton School</p>').appendTo('body');
 
-$(document).ready(() => {
-    $('<p/>', { text: 'Holberton Dashboard' }).appendTo('body');
-    $('<p/>', { text: 'Dashboard data for the students' })
-	.appendTo('body');
-    $('<button/>', { text: 'Click here to get started' })
-	.appendTo('body').on('click', updateCounter);
-    $('<p/>', { id: 'count' }).appendTo('body');
-    $('<p/>', { text: 'Copyright - Holberton School' })
-	.appendTo('body');
+    let count = 0;
+    function updateCounter() {
+        count++;
+        $('#count').text(`${count} clicks on the button`);
+    }
 });
