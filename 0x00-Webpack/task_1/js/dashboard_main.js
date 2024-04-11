@@ -8,7 +8,8 @@ import _ from 'lodash';
 
 const updateCounter = _.debounce(() => {
     const count = parseInt($('#count').text()) || 0;
-    $('#count').text('${count + 1} clicks on the button');
+    count += 1;
+    $('#count').text(`${count} clicks on the button`);
 }, 300);
 
 $(document).ready(() => {
