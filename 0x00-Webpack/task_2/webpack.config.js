@@ -1,49 +1,36 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-
+const path = require("path");
 
 module.exports = {
-    mode: 'production',
-    entry: './js/dashboard_main.js',
-    output: {
-	path: path.resolve(__dirname, 'public'),
-	filename: 'bundle.js',
-    },
-    module: {
-	rules: [
-	    {
-		test: /\.js$/,
-		exclude: /node_modules/,
-		use: {
-		    loader: 'babel-loader',
-		    options: {
-			presets: ['@babel/preset-env'],
-		    },
-		},
-	    },
-	    {
-		test: /\.css$/,
-		use: ['style-loader', 'css-loader'],
-	    },
-	    {
-		test: /\.(png|jpg|jpeg|gif|svg)$/,
-		use: {
-		    loader: 'url-loader',
-		    options: {
-			limit: 8192,
-			name: '[name].[ext]',
-			outputPath: 'images',
-		    },
-		},
-	    },
-	],
-    },
-    plugins: [
-	new HtmlWebpackPlugin({
-	    template: '/public/index.html',
-	    filename: './index.html',
-	}),
-	new OptimizeCssAssetsPlugin(),
+  mode: "production",
+  entry: "./js/dashboard_main.js",
+  output: {
+    path: path.resolve(__dirname, "public"),
+    filename: "bundle.js",
+  },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.(gif|png|jp?g|svg)$/i,
+        use: [
+          "file-loader",
+          {
+            loader: "image-webpack-loader",
+            options: {
+              bypassOnDebug: true,
+              disable: true,
+            },
+          },
+        ],
+      },
     ],
+  },
 };
