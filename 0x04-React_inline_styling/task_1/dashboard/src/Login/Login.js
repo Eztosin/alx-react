@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, css } from "aphrodite";
 
-function Login() {
+export default function Login() {
   return (
     <React.Fragment>
       <div className={css(styles["App-body"])}>
@@ -29,5 +29,3 @@ const styles = StyleSheet.create({
     margin: "10px",
   },
 });
-
-export default Login;
