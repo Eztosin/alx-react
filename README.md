@@ -17,3 +17,5 @@
 - 0x07-React_Redux_action_creator+normalizr
 
 - 0x08-react_redux_reducer_selector
+
+- 0x09-react_redux_connectors_and_providers
