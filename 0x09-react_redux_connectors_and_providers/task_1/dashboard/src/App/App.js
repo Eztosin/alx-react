@@ -27,7 +27,7 @@ class App extends React.Component {
           </div>
           {this.props.isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
-              <CourseList listCourses={this.listCourses} /> {}
+              <CourseList listCourses={this.listCourses} />
             </BodySectionWithMarginBottom>
           ) : (
             <BodySectionWithMarginBottom title="Log in to continue">
@@ -58,9 +58,8 @@ const styles = StyleSheet.create({
 
 App.defaultProps = {
   isLoggedIn: false,
-  logOut: () => {
-    return;
-  },
+  logOut: () => {},
+  displayDrawer: false,
 };
 
 App.propTypes = {
