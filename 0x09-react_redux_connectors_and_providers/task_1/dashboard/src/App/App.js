@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { displayNotificationDrawer, hideNotificationDrawer } from "../actions/notificationActions";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Login from "../Login/Login";
@@ -7,9 +8,8 @@ import CourseList from "../CourseList/CourseList";
 import Notifications from "../Notifications/Notifications";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
-import { StyleSheet, css } from "aphrodite";
 import PropTypes from "prop-types";
-import { getLatestNotification } from "../utils/utils";
+import { StyleSheet, css } from "aphrodite";
 
 class App extends React.Component {
   render() {
@@ -18,16 +18,16 @@ class App extends React.Component {
         <div className={css(styles.App)}>
           <div className="heading-section">
             <Notifications
-              displayDrawer={this.state.displayDrawer}
-              handleDisplayDrawer={this.handleDisplayDrawer}
-              handleHideDrawer={this.handleHideDrawer}
+              displayDrawer={this.props.displayDrawer}
+              handleDisplayDrawer={this.props.displayNotificationDrawer}
+              handleHideDrawer={this.props.hideNotificationDrawer}
               listNotifications={this.listNotifications}
             />
             <Header />
           </div>
           {this.props.isLoggedIn ? (
             <BodySectionWithMarginBottom title="Course list">
-              <CourseList listCourses={this.listCourses} />
+              <CourseList listCourses={this.listCourses} /> {}
             </BodySectionWithMarginBottom>
           ) : (
             <BodySectionWithMarginBottom title="Log in to continue">
@@ -66,6 +66,9 @@ App.defaultProps = {
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
   logOut: PropTypes.func,
+  displayDrawer: PropTypes.bool,
+  displayNotificationDrawer: PropTypes.func.isRequired,
+  hideNotificationDrawer: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
@@ -75,4 +78,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {
+  displayNotificationDrawer,
+  hideNotificationDrawer,
+})(App);
